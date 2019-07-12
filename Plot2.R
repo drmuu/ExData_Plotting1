@@ -22,6 +22,7 @@ power <- read_delim("./data/household_power_consumption.txt", delim = ";", na = 
 power$Date <- dmy(power$Date)
 
 #filter out the days we wanna plot
+<<<<<<< HEAD
 power <- power %>% 
         filter(between(Date, as_date("2007-02-01"), as_date("2007-02-02")))  %>%
         mutate(datetime = paste(as.character(Date), Time, sep = " ")) %>%
@@ -30,4 +31,12 @@ power <- power %>%
 # plot --------------------------------------------------------------------
 png(filename = "Plot2.png", width = 480, height = 480)
 with(power, plot(datetime, Global_active_power, type =  "l", ylab = "Global Active Power (kilowatts)"))
+=======
+power <- filter(power, Date ==  "2007-02-01" | Date ==  "2007-02-02")
+
+# plot --------------------------------------------------------------------
+#Here I fail to plot the weekday names on the x-axis. Please give hints if you managed! 
+png(filename = "Plot2.png", width = 480, height = 480)
+plot(power$Global_active_power, xaxt = "n", type =  "l", ylab = "Global Active Power (kilowatts)")
+>>>>>>> 05cbf8c53bfeedb317de426eae27ab73ee631848
 dev.off()

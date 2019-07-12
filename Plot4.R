@@ -28,6 +28,7 @@ power <- filter(power, Date ==  "2007-02-01" | Date ==  "2007-02-02")
 png(filename = "Plot4.png", width = 480, height = 480)
 par(mfrow=c(2,2))
 #topleft
+<<<<<<< HEAD
 with(power, plot(datetime, Global_active_power, xaxt = "n", type =  "l", ylab = "Global Active Power", xlab=""))
 
 #topright
@@ -41,5 +42,21 @@ legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),lty =
 
 #bottomright
 with(power, plot(datetime, Global_reactive_power, type =  "l", ylab = "Global Reactive Power",xlab="datetime"))
+=======
+plot(power$Global_active_power, xaxt = "n", type =  "l", ylab = "Global Active Power")
+
+#topright
+plot(power$Voltage, xaxt = "n", type =  "l", ylab = "Voltage")
+
+#bottomleft
+plot(power$Sub_metering_1, xaxt = "n", type =  "n", ylab = "Energy sub metering")
+lines(power$Sub_metering_1, col="black")
+lines(power$Sub_metering_2, col="red")
+lines(power$Sub_metering_3, col="blue")
+legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),lty = 1, col=c("black", "red", "blue"))
+
+#bottomright
+plot(power$Global_reactive_power, xaxt = "n", type =  "l", ylab = "Global Reactive Power")
+>>>>>>> 05cbf8c53bfeedb317de426eae27ab73ee631848
 
 dev.off()
